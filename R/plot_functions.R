@@ -15,7 +15,7 @@ eqLineLong <- function(df, from){
     }
     ggplot(df) +
       geom_line(aes(x = date, y = eq_l, color = symbol)) +
-      theme_0cap()
+      theme_epsilon()
   }
 }
 
