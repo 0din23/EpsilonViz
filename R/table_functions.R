@@ -5,7 +5,7 @@ Performance_Summary <- function(df, from){
     EpsilonUtility::transformHLOC(DF=.,
                                   PCT=c(1)) %>%
     filter(date >= as.Date(from)) %>%
-    muatet(ret = PCT1)
+    mutate(ret = PCT1)
   table <- data.frame(matrix(ncol = 5, nrow=length(symbols)))
   for(k in 1:length(symbols)){
     table[k,1] <- df %>%
