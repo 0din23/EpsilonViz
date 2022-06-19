@@ -20,7 +20,8 @@ eqLineLong <- function(df, from, dec = NULL){
              "Equity" = eq_l -1)
 
     p <- ggplot(df) +
-      geom_line(aes(x = Date, y = Equity, color = symbol))
+      geom_line(aes(x = Date, y = Equity, color = symbol)) +
+      scale_x_continuous(breaks=df$Date)
 
     # scale
     if(!is.null(dec)){
