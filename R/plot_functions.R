@@ -19,16 +19,10 @@ eqLineLong <- function(df, from){
       mutate("Date" = as.Date(date),
              "Equity" = eq_l)
 
+    ggplot(df) +
+      geom_line(aes(x = Date, y = Equity, color = symbol)) +
+      theme_epsilon()
 
-    if(length(symbols) <= 1){
-      ggplot(df) +
-        geom_line(aes(x = Date, y = Equity)) +
-        theme_epsilon()
-    } else {
-      ggplot(df) +
-        geom_line(aes(x = Date, y = Equity, color = symbol)) +
-        theme_epsilon()
-    }
   }
 }
 
