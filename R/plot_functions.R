@@ -16,11 +16,11 @@ eqLineLong <- function(df, from){
 
     if(length(symbols) <= 1){
       ggplot(df) +
-        geom_line(aes(x = date, y = eq_l)) +
+        geom_line(aes(x = as.Date(date), y = as.numeric(eq_l))) +
         theme_epsilon()
     } else {
       ggplot(df) +
-        geom_line(aes(x = date, y = eq_l, color = symbol)) +
+        geom_line(aes(x = as.Date(date), y = as.numeric(eq_l), color = symbol)) +
         theme_epsilon()
     }
   }
