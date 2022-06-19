@@ -14,13 +14,19 @@ eqLineLong <- function(df, from){
         cumRet()
     }
 
+    ## plot pre processeing
+    df <- df %>%
+      mutate("Date" = as.Date(date),
+             "Equity" = eq_l)
+
+
     if(length(symbols) <= 1){
       ggplot(df) +
-        geom_line(aes(x = as.Date(date), y = as.numeric(eq_l))) +
+        geom_line(aes(x = Date, y = Equity)) +
         theme_epsilon()
     } else {
       ggplot(df) +
-        geom_line(aes(x = as.Date(date), y = as.numeric(eq_l), color = symbol)) +
+        geom_line(aes(x = Date, y = Equity, color = symbol)) +
         theme_epsilon()
     }
   }
