@@ -1,4 +1,4 @@
-eqLineLong <- function(df, from){
+eqLineLong <- function(df, from, dec = NULL){
   if(!(from %in% df$date)){
     print("Startdate not in df.")
   } else{
@@ -19,9 +19,20 @@ eqLineLong <- function(df, from){
       mutate("Date" = as.Date(date),
              "Equity" = eq_l)
 
-    ggplot(df) +
-      geom_line(aes(x = Date, y = Equity, color = symbol)) +
-      theme_epsilon()
+    p <- ggplot(df) +
+      geom_line(aes(x = Date, y = Equity, color = symbol))
+
+    # scale
+    if(!is.null(dec)){
+      MIN <- df$Equity %>% min()
+      MIN <- MIN * 0.9
+      MAX <- df$Equity %>% max()
+      MAX <- MAX * 1.1
+      BREAK <- seq(MIN, MAX, 10)
+      p <- p + scale_y_continuous(breaks=BREAK)
+    }
+
+    return(p)
 
   }
 }
