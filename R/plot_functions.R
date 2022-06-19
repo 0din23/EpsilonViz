@@ -1,6 +1,6 @@
 eqLineLong <- function(df, from){
   if(!(from %in% df$date)){
-    prin("Startdate not in df.")
+    print("Startdate not in df.")
   } else{
     df <- df %>%
       filter(date >= as.Date(from))
@@ -13,9 +13,16 @@ eqLineLong <- function(df, from){
         as.numeric() %>%
         cumRet()
     }
-    ggplot(df) +
-      geom_line(aes(x = date, y = eq_l, color = symbol)) +
-      theme_epsilon()
+
+    if(length(symbols) <= 1){
+      ggplot(df) +
+        geom_line(aes(x = date, y = eq_l)) +
+        theme_epsilon()
+    } else {
+      ggplot(df) +
+        geom_line(aes(x = date, y = eq_l, color = symbol)) +
+        theme_epsilon()
+    }
   }
 }
 
