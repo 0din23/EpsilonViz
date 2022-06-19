@@ -12,6 +12,7 @@ eqLineLong <- function(df, from, dec = NULL){
         Delt() %>%
         as.numeric() %>%
         cumRet()
+      df$eq_l <- df$eq_l -1
     }
 
     ## plot pre processeing
