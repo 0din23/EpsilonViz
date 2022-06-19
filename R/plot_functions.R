@@ -28,7 +28,7 @@ eqLineLong <- function(df, from, dec = NULL){
       MIN <- MIN * 0.9
       MAX <- df$Equity %>% max()
       MAX <- MAX * 1.1
-      BREAK <- seq(MIN, MAX, 10)
+      BREAK <- seq(MIN, MAX, 10^(-dec))
       p <- p + scale_y_continuous(breaks=BREAK)
     }
 
