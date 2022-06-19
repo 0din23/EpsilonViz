@@ -21,7 +21,7 @@ eqLineLong <- function(df, from, dec = NULL, thick = NULL){
 
     if(!is.null(thick)){
       p <- ggplot(df) +
-        geom_line(aes(x = Date, y = Equity, color = symbol, size = thick)) +
+        geom_line(aes(x = Date, y = Equity, color = symbol, size = 1.5)) +
         scale_x_continuous(breaks=df$Date)
     } else{
       p <- ggplot(df) +
@@ -32,7 +32,7 @@ eqLineLong <- function(df, from, dec = NULL, thick = NULL){
     # scale
     if(!is.null(dec)){
       MIN <- df$Equity %>% min()
-      MIN <- MIN * 0.9
+      MIN <- MIN * 1.1
       MAX <- df$Equity %>% max()
       MAX <- MAX * 1.1
       BREAK <- seq(MIN, MAX, 10^(-dec)) %>%
