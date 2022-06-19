@@ -12,13 +12,12 @@ eqLineLong <- function(df, from, dec = NULL){
         Delt() %>%
         as.numeric() %>%
         cumRet()
-      df$eq_l <- df$eq_l -1
     }
 
     ## plot pre processeing
     df <- df %>%
       mutate("Date" = as.Date(date),
-             "Equity" = eq_l)
+             "Equity" = eq_l -1)
 
     p <- ggplot(df) +
       geom_line(aes(x = Date, y = Equity, color = symbol))
